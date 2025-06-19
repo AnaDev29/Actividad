@@ -3,7 +3,7 @@ body {
     max-width: 700px;
     margin: 0 auto;
     padding: 20px;
-    background: linear-gradient(135deg, #88c5ee 0%, #267bdd 100%);
+    background: linear-gradient(135deg, #88c5ee 0%, #05366e 100%);
     min-height: 100vh;
 }
 
@@ -38,9 +38,9 @@ body {
 
 h1 {
     color: #333;
-   text-align: center;
-   margin-bottom: 30px;
-   font-size: 2rem;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2rem;
 }
 
 label {
@@ -63,19 +63,20 @@ textarea {
     transition: all 0.3s ease;
 }
 
-/*Estados de validacion visual */
+/* Estados de validacion visual */
 input.valido,
 select.valido,
 textarea.valido {
-    border-color: #28a745;
-    background-color: #f8fff9; 
+    border-color: #28a745; /* Color verde para válido */
+    background-color: #f8fff9;
 }
 
-input.valido,
-select.valido,
-textarea.valido {
-    border-color: #dc3545;
-    background-color: #f8fff9;
+/* Corregido: Ahora esta regla apunta a los campos inválidos */
+input.invalido,
+select.invalido,
+textarea.invalido {
+    border-color: #dc3545; /* Color rojo para inválido */
+    background-color: #fff8f8; /* Un fondo ligeramente rosado para inválido */
 }
 
 input:focus,
@@ -86,16 +87,19 @@ textarea:focus {
     box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
 
-/*Mensaje de error */
-.mensaje-error {
-    color:#dc3545;
-    font-size: o.85rem;
+/* Mensaje de error */
+.mensaje-error,
+.message-error { /* Añadido .message-error para consistencia */
+    color: #dc3545;
+    font-size: 0.85rem; /* Corregido el 'o' por '0' */
     margin-top: 5px;
     display: none;
     animation: slideDown 0.3s ease;
 }
 
-.mensaje-exito {
+/* Mensaje de éxito */
+.mensaje-exito,
+.message-success { /* Añadido .message-success para consistencia */
     color: #28a745;
     font-size: 0.85rem;
     margin-top: 5px;
@@ -108,7 +112,6 @@ textarea:focus {
         opacity: 0;
         transform: translateY(-10px);
     }
-
     to {
         opacity: 1;
         transform: translateY(0);
@@ -144,8 +147,11 @@ textarea:focus {
 }
 
 button {
-    background-color: linear-gradient(135deg, #2973fc, #2e3cf7 100%);
-    color: rgb(103, 177, 247);
+    /* Corregido: La propiedad background-color no acepta linear-gradient directamente.
+       Usa 'background' o 'background-image' para gradientes.
+       También ajusté el color del texto para que contraste mejor con el gradiente. */
+    background: linear-gradient(135deg, #2973fc, #2e3cf7);
+    color: white; /* Color de texto blanco para mejor contraste */
     padding: 15px 30px;
     border: none;
     border-radius: 8px;
@@ -159,12 +165,13 @@ button {
 
 button:hover:not(:disabled) {
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    box-shadow: 0 5px 15px rgba(46, 60, 247, 0.4); /* Sombra basada en el color del gradiente */
 }
 
 button:disabled {
     background: #ccc;
     cursor: not-allowed;
+    opacity: 0.7; /* Ligeramente transparente para indicar que está deshabilitado */
 }
 
 .contador-caracteres {
